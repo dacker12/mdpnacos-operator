@@ -1,0 +1,40 @@
+apiVersion: nacos.xhx-jspt.cloud/v1
+kind: Mdpnacos
+metadata:
+  labels:
+    app.kubernetes.io/name: mdpnacos
+    app.kubernetes.io/instance: mdpnacos-sample
+    app.kubernetes.io/part-of: mdp-nacos
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: mdp-nacos
+  name: mdpnacos-sample-nginx
+spec:
+  # TODO(user): Add fields here
+  image: nginx:latest
+  stsname: nginx-example
+  stsSelector: nginx-example
+  targetPort: 80
+  stsnamespace: default
+  headlessSvcName: headless-nginx
+  minMumPod: 3
+  maxMumPod: 6
+  pvSpec:
+    storageClassName: local-storage 
+    capacity: 
+      storage: 2Gi  
+    accessModes:  
+    - ReadWriteOnce  
+    persistentVolumeReclaimPolicy: Retain  
+    hostPath:
+      path: "/app/appuser/nacosData"
+  pvcSpec:
+      storageClassName: local-storage   
+      accessModes:  
+      - ReadWriteOnce  
+      resources:  
+        requests:  
+          storage: 2Gi 
+  scalingPolicy:
+    scaleQpsPolicy:
+      singleAppQps: 20
+      allAppQps: 30

@@ -1,0 +1,12 @@
+apiVersion: nacos.xhx-jspt.cloud/v1
+kind: Mdpnacos
+metadata:
+  labels:
+    app.kubernetes.io/name: mdpnacos
+    app.kubernetes.io/instance: mdpnacos-sample
+    app.kubernetes.io/part-of: mdp-nacos
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: mdp-nacos
+  name: mdpnacos-sample
+spec:
+  # TODO(user): Add fields here

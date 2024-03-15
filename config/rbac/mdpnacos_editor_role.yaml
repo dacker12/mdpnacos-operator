@@ -1,0 +1,31 @@
+# permissions for end users to edit mdpnacos.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: mdpnacos-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: mdp-nacos
+    app.kubernetes.io/part-of: mdp-nacos
+    app.kubernetes.io/managed-by: kustomize
+  name: mdpnacos-editor-role
+rules:
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos/status
+  verbs:
+  - get

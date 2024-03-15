@@ -1,0 +1,27 @@
+# permissions for end users to view mdpnacos.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: mdpnacos-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: mdp-nacos
+    app.kubernetes.io/part-of: mdp-nacos
+    app.kubernetes.io/managed-by: kustomize
+  name: mdpnacos-viewer-role
+rules:
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos/status
+  verbs:
+  - get

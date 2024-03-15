@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - nacos.xhx-jspt.cloud
+  resources:
+  - mdpnacos/status
+  verbs:
+  - get
+  - patch
+  - update
